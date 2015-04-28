@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Click Speed</title>
+	 <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://bootswatch.com/darkly/bootstrap.min.css">
+
+	<!-- Optional theme -->
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+
+
+<script>
+$(document).ready(function() {
+	var clicked = 0, secondsSpent = 0;
+	var time = setTimeout;
+
+	$('go').click(function() {
+		secondsSpent = 0;
+		clicked = 0;
+	});
+
+		var StartClock = function() {setInterval(function() {
+		 secondsSpent++; 
+		 console.log(secondsSpent) 
+		}, 1000)
+	}
+
+
+
+		
+
+		setTimeout(StartClock, 100);
+
+		$('.block').click(function() {
+			clicked ++;
+
+			if(secondsSpent == 0) { console.log('Checked')
+			} else {	
+			$('#sp').remove();
+			$('<p id="sp">' + (Math.round(((clicked / secondsSpent) * 100))) / 100 + '</p>').appendTo('.amnt');
+			console.log((Math.round(((clicked / secondsSpent) * 100))) / 100)
+
+			}
+			})
+		})
+
+</script>
+
+<style>
+
+.block {
+	float: center;
+	margin: auto;
+	border: red 10px solid;
+	padding: 10px;
+	width: 200px;
+	height: 200px;
+	background-color: white;
+}
+
+.amnt {
+	margin: 10px;
+	border: red 10px solid;
+	padding: 10px;
+	width: 100px;
+	height: 60px;
+	background-color: white;
+	text-align: center;
+}
+
+#sp { 
+	color: black;
+ 	margin: auto; 
+ 	padding: 0 0 0 0; 
+ 	border: 0 0 0 0 
+ }
+
+.foot ul {
+	display: inline-block;
+	list-style-type: none;
+	padding: 0px;
+}
+
+</style>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Click Speed Test</a>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+
+
+<div class="amnt">
+	<p id="sp">0</p>
+</div>
+<br>
+<br>
+
+
+<div class="add">
+<div class="block"></div>
+<hr/>
+</div>
+</div>
+<br>
+<div class="container">
+	<div class="col-md-4 text-center"> <a href="" id="go" class="btn btn-info">Restart</a></div>
+</div>
+<br>
+<!-- <footer class="foot">
+	<div class="container">
+	<hr/>
+	<ul style="text-align: right">
+		<li>asdfsd</li>
+		<li>adsfdsaf</li>
+
+	</ul>
+	</div>
+</footer> -->
+
+
+</body>
+</html>
