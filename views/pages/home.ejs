@@ -25,23 +25,42 @@
 
 <script>
 $(document).ready(function() {
-	var clicked = 0, secondsSpent = 0;
+	var clicked = 0, secondsSpent = 0; cd = 3;
 	var time = setTimeout;
+	$('#clicksps').hide(1, 0)
+	$('<p id="clicksps1" style="color: black"> 3 </p>').appendTo('#cpswrap')
 
 	$('#go').click(function() {
 		secondsSpent = 0;
 		clicked = 0;
 	});
+		//countdown to CPS timer
+		var countdown = setInterval(function() {
+			cd--;
+			$('#clicksps1').remove()
+			$('<p id="clicksps1" style="color: black">' + cd + '</p>').appendTo('#cpswrap')
+			console.log(cd)
+		}, 1000);
 
+		//Starts CPS timer
 		var StartClock = function() {setInterval(function() {
 		 secondsSpent++; 
+		 clearInterval(countdown)
+		 $('#tp').remove();
+		 $('<span id="tp">' + secondsSpent + '</span>').appendTo('#tpa')
+		 $('#clicksps1').remove()
+			$('#clicksps').show(1, 1)
 		 console.log(secondsSpent) 
 		}, 900)
 	}
-	
+
+		//invokes CPS timer function after 3 seconds of the page loading
 		setTimeout(StartClock, 3000);
 
+
+		//click event
 		$('.button').click(function() {
+
 			if(secondsSpent == 0) { 
 				console.log('Checked'); 
 				clicked == 0;
@@ -49,7 +68,9 @@ $(document).ready(function() {
 			$('.button').fadeTO
 			clicked ++;
 			$('#sp').remove();
-			$('<p id="sp">' + (Math.round(((clicked / secondsSpent) * 100))) / 100 + '</p>').appendTo('.amnt');
+			$('#cp').remove();
+			$('<span id="cp">' + clicked + '</span>').appendTo('#cpa')
+			$('<span id="sp">' + (Math.round(((clicked / secondsSpent) * 100))) / 100 + '</span>').appendTo('#ap');
 			console.log((Math.round(((clicked / secondsSpent) * 100))) / 100)
 
 			}
@@ -72,17 +93,24 @@ $(document).ready(function() {
 
 <div class="container">
 
-
-<div class="amnt">
-	<p id="sp">0</p>
-</div>
 <br>
 <br>
 
 <div class="button"></div>
 <br>
-<hr/>
-<div class="container"><a href="#" id="go" class="btn btn-info">Restart</a>
+<div class="col-md-4 text-center"> 
+<div id="cpswrap">
+	<p id="clicksps" style="color: black">Clicks Per Second: <span id="ap"><span id="sp">0</span></span></p>
+</div>
+<p style="color: black">Time: <span id="tpa"><span id="tp">0</span></span> seconds, Clicks: <span id="cpa"><span id="cp">0</span></span></p>
+
+</div>
+<br>
+<br>
+
+<div class="col-md-4 text-center"> 
+<a href="" id="go" class="btn btn-warning">Restart</a>
+</div>
 </div>
 <br>
 <!-- <footer class="foot">
