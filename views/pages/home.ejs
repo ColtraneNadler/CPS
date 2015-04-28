@@ -28,7 +28,7 @@ $(document).ready(function() {
 	var clicked = 0, secondsSpent = 0;
 	var time = setTimeout;
 
-	$('go').click(function() {
+	$('#go').click(function() {
 		secondsSpent = 0;
 		clicked = 0;
 	});
@@ -36,20 +36,18 @@ $(document).ready(function() {
 		var StartClock = function() {setInterval(function() {
 		 secondsSpent++; 
 		 console.log(secondsSpent) 
-		}, 1000)
+		}, 900)
 	}
+	
+		setTimeout(StartClock, 3000);
 
-
-
-		
-
-		setTimeout(StartClock, 100);
-
-		$('.block').click(function() {
-			clicked ++;
-
-			if(secondsSpent == 0) { console.log('Checked')
+		$('.button').click(function() {
+			if(secondsSpent == 0) { 
+				console.log('Checked'); 
+				clicked == 0;
 			} else {	
+			$('.button').fadeTO
+			clicked ++;
 			$('#sp').remove();
 			$('<p id="sp">' + (Math.round(((clicked / secondsSpent) * 100))) / 100 + '</p>').appendTo('.amnt');
 			console.log((Math.round(((clicked / secondsSpent) * 100))) / 100)
@@ -60,17 +58,106 @@ $(document).ready(function() {
 
 </script>
 
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Click Speed Test</a>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+
+
+<div class="amnt">
+	<p id="sp">0</p>
+</div>
+<br>
+<br>
+
+<div class="button"></div>
+<br>
+<hr/>
+<div class="container"><a href="#" id="go" class="btn btn-info">Restart</a>
+</div>
+<br>
+<!-- <footer class="foot">
+	<div class="container">
+	<hr/>
+	<ul style="text-align: right">
+		<li>asdfsd</li>
+		<li>adsfdsaf</li>
+
+	</ul>
+	</div>
+</footer> -->
+
+
+
+
 <style>
 
-.block {
-	float: center;
-	margin: auto;
-	border: red 10px solid;
-	padding: 10px;
-	width: 200px;
-	height: 200px;
-	background-color: white;
+html, body{
+  min-height:100%;
 }
+
+body{
+  		background-image: -webkit-linear-gradient(top, #edecec, #cecbc9);
+			background-image: linear-gradient(top, #edecec, #cecbc9);
+}
+
+.buttonHolder{
+  margin:80px auto;
+  width:400px;
+}
+
+
+		.button{
+			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+			background-image: linear-gradient(top, #f4f1ee, #fff);
+			border-radius: 50px;
+			box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+			height: 200px;
+			margin: auto;
+			width: 200px;			
+			-webkit-transition: all .1s linear;
+			transition: all .1s linear;
+		}
+
+		.button:after{
+			color:#e9e6e4;
+			content: "";
+			display: block;
+			font-size: 30px;
+			height: 30px;
+			text-decoration: none;
+			text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+			position: absolute;
+			width: 30px;
+		}
+
+		.button:hover{
+			background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+			background-image: linear-gradient(top, #fff, #f4f1ee);
+			color:#0088cc;
+		}
+		
+
+		.button:active{
+			background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+			background-image: linear-gradient(top, #efedec, #f7f4f4);
+			box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+		}
+
+		.button:active:after{
+			color:#dbd2d2;
+			text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+		}
+
 
 .amnt {
 	margin: 10px;
@@ -96,50 +183,6 @@ $(document).ready(function() {
 }
 
 </style>
-
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">Click Speed Test</a>
-
-    </div>
-  </div>
-</nav>
-
-
-<div class="container">
-
-
-<div class="amnt">
-	<p id="sp">0</p>
-</div>
-<br>
-<br>
-
-
-<div class="add">
-<div class="block"></div>
-<hr/>
-</div>
-</div>
-<br>
-<div class="container">
-	<div class="col-md-4 text-center"> <a href="" id="go" class="btn btn-info">Restart</a></div>
-</div>
-<br>
-<!-- <footer class="foot">
-	<div class="container">
-	<hr/>
-	<ul style="text-align: right">
-		<li>asdfsd</li>
-		<li>adsfdsaf</li>
-
-	</ul>
-	</div>
-</footer> -->
-
 
 </body>
 </html>

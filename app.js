@@ -7,7 +7,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use('assets/style.css');
+app.use('/assets', express.static('../../assets'));
 
 app.get('/', function(req, res) {
 	res.render('pages/home.ejs');
