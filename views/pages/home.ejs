@@ -34,12 +34,19 @@ $(document).ready(function() {
 		secondsSpent = 0;
 		clicked = 0;
 	});
+
+
+	setTimeout(function() {
+			$('#wrapper').remove();
+		$('<div class="container" style="text-align: center"><br><br><br><h1 style="color: black">You can click <strong>' + (Math.round(clicked / secondsSpent) * 100) / 100 + '</strong>cps</h1><div><br><br><br>').appendTo('#appWrapper');
+	}, 12000)
+
 		//countdown to CPS timer
 		var countdown = setInterval(function() {
 			cd--;
 			$('#clicksps1').remove()
 			$('<p id="clicksps1" style="color: black">' + cd + '</p>').appendTo('#cpswrap')
-			console.log(cd)
+			//console.log(cd)
 		}, 1000);
 
 		//Starts CPS timer
@@ -50,7 +57,7 @@ $(document).ready(function() {
 		 $('<span id="tp">' + secondsSpent + '</span>').appendTo('#tpa')
 		 $('#clicksps1').remove()
 			$('#clicksps').show(1, 1)
-		 console.log(secondsSpent) 
+		 //console.log(secondsSpent) 
 		}, 900)
 	}
 
@@ -62,7 +69,7 @@ $(document).ready(function() {
 		$('.button').click(function() {
 
 			if(secondsSpent == 0) { 
-				console.log('Checked'); 
+				//console.log('Checked'); 
 				clicked == 0;
 			} else {	
 			$('.button').fadeTO
@@ -71,7 +78,7 @@ $(document).ready(function() {
 			$('#cp').remove();
 			$('<span id="cp">' + clicked + '</span>').appendTo('#cpa')
 			$('<span id="sp">' + (Math.round(((clicked / secondsSpent) * 100))) / 100 + '</span>').appendTo('#ap');
-			console.log((Math.round(((clicked / secondsSpent) * 100))) / 100)
+			//console.log((Math.round(((clicked / secondsSpent) * 100))) / 100)
 
 			}
 			})
@@ -91,13 +98,17 @@ $(document).ready(function() {
 </nav>
 
 
-<div class="container">
+
+<div id="" class="container">
 
 <br>
 <br>
-
+<div id="appWrapper">
+<div id="wrapper">
 <div class="button"></div>
 <br>
+<div class="col-md-4 text-center"> 
+</div>
 <div class="col-md-4 text-center"> 
 <div id="cpswrap">
 	<p id="clicksps" style="color: black">Clicks Per Second: <span id="ap"><span id="sp">0</span></span></p>
@@ -105,14 +116,22 @@ $(document).ready(function() {
 <p style="color: black">Time: <span id="tpa"><span id="tp">0</span></span> seconds, Clicks: <span id="cpa"><span id="cp">0</span></span></p>
 
 </div>
+</div>
+</div>
+</div>
 <br>
-<br>
-
+<div class="col-md-4 text-center"> 
+</div>
 <div class="col-md-4 text-center"> 
 <a href="" id="go" class="btn btn-warning">Restart</a>
 </div>
 </div>
+</div>
 <br>
+<br>
+<br>
+<br>
+
 <!-- <footer class="foot">
 	<div class="container">
 	<hr/>
