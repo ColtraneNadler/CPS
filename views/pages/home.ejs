@@ -23,9 +23,10 @@
 
 
 
+
 <script>
 $(document).ready(function() {
-	var clicked = 0, secondsSpent = 0; cd = 3;
+	var clicked = 0, secondsSpent = 0; cd = 3; cps = 0;
 	var time = setTimeout;
 	$('#clicksps').hide(1, 0)
 	$('<p id="clicksps1" style="color: black"> 3 </p>').appendTo('#cpswrap')
@@ -38,8 +39,9 @@ $(document).ready(function() {
 
 	setTimeout(function() {
 			$('#wrapper').remove();
-		$('<div class="container" style="text-align: center"><br><br><br><h1 style="color: black">You can click <strong>' + (Math.round(clicked / secondsSpent) * 100) / 100 + '</strong>cps</h1><div><br><br><br>').appendTo('#appWrapper');
-	}, 12000)
+		$('<div class="container" style="text-align: center"><br><br><br><h1 style="color: black">You can click <strong>' + cps + '</strong>cps</h1><div><br><br><br>').appendTo('#appWrapper');
+		clearInterval(cpstracker)
+	}, 14000)
 
 		//countdown to CPS timer
 		var countdown = setInterval(function() {
@@ -58,12 +60,15 @@ $(document).ready(function() {
 		 $('#clicksps1').remove()
 			$('#clicksps').show(1, 1)
 		 //console.log(secondsSpent) 
-		}, 900)
+		}, 1200)
 	}
 
 		//invokes CPS timer function after 3 seconds of the page loading
-		setTimeout(StartClock, 3000);
+		setTimeout(StartClock, 2600);
 
+		var cpstracker = setInterval(function() {
+			cps = (Math.round(((clicked / secondsSpent) * 100))) / 100;
+		}, 400)
 
 		//click event
 		$('.button').click(function() {
@@ -86,6 +91,7 @@ $(document).ready(function() {
 
 </script>
 
+
 <body>
 
 <nav class="navbar navbar-inverse">
@@ -104,7 +110,7 @@ $(document).ready(function() {
 <br>
 <br>
 <div id="appWrapper">
-<div id="wrapper">
+<div id="wrapper" style="text-align:center">
 <div class="button"></div>
 <br>
 <div class="col-md-4 text-center"> 
