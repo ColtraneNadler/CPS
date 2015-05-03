@@ -6,12 +6,12 @@ var client = redis.createClient(6379, '****');
 var jquery = require('jquery');
 
 client.on('connect', function() {
-    console.log('Connected to REDIS');
+    console.log('Established a connection to REDIS');
 })
 
 
 client.on('error', function() {
-    console.log('Could not establish connection to REDIS')
+    console.log('Could not establish a connection to REDIS')
 })
 
 

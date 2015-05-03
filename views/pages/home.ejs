@@ -24,7 +24,6 @@
 
 
 <script>
-<%
 	var clicked = 0, secondsSpent = 0; cd = 3; cps = 0; username = '';
 	var time = setTimeout;
 
@@ -64,6 +63,7 @@ $('#submit').click(function() {
 		player = JSON.stringify(player);
 		console.log(player);
 		clearInterval(cpstracker);
+		//right here i want to use the 'saveClicks' function in my app.js to send the key value pair of the user + cps to redis!
 	}, 13000)
 
 		//countdown to CPS timer
@@ -112,7 +112,6 @@ $('#submit').click(function() {
 	}
 		})
 })
-%>
 </script>
 
 
